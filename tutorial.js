@@ -993,3 +993,310 @@ console.log(myConcat([1,2],[3,4,5]));
 // This
 var myConcat = (arr1, arr2) => arr1.concat(arr2);
 console.log(myConcat([1,2],[3,4,5]));
+
+
+// higher order arrow FUNCTIONS
+// when one function takes another function as an argument
+const realNumberArray = [4,5.6,-9.8,3.14,42,6,8.34,-2];
+const squareList = (arr) => {
+  const squaredIntegers = arr.filter(num => Number.isInteger(num) && num > 0).map(x => x * x);
+  return squaredIntegers;
+}
+const squaredIntegers = squareList(realNumberArray);
+console.log(squaredIntegers);
+
+
+// this sets a defualt increment value of 1,
+// allows us below to increment by 2 if we put in two values, or use default of 1
+const increment = (function () {
+  return function increment(number, value = 1) {
+    return number + value;
+  };
+})();
+console.log(increment(5,2));
+console.log(increment(5));
+
+
+// use rest operator with function parameters
+// ... is the rest operator
+// this converts everything passed in to an array that we call args
+// the reduce line sums everything up
+const sum2 = (function () {
+  return function sum(...args) {
+    return args.reduce((a,b) => a + b, 0);
+  };
+})();
+console.log(sum2(1,2,3,4,5));
+
+
+// using spread operator to evaluate arrays in place
+// is also ... but it expands or spreads out an existing array
+// using this does not make arr2 equal to arr 1, it makes arr2 equal to the contents of arr1
+const arr1 = ['JAN','FEB','MAR','APR','MAY'];
+let arr2;
+(function() {
+  arr2 = [...arr1];
+  arr1[0] = 'potato'
+})();
+console.log(arr2);
+
+
+// using destructuring assignment to assign variables from objects
+var voxel = {x: 3.6, y: 7.4, z: 6.54};
+//old way to assign each object to variable.
+var x = voxel.x;
+var y = voxel.y;
+var z = voxel.z;
+//using destructuring to do this new always
+const { x : u, y : p, z : o } = voxel;  // a = 3.6, b = 7.4, c = 6.54
+
+//use this below to get average temperatures
+const AVG_TEMPERATURES = {
+  today: 77.5,
+  tomorrow: 79
+};
+
+function getTempOfTmrw(avgTemperatures) {
+  "use strict";
+  const { tomorrow: tempOfTomorrow } = avgTemperatures;
+  return tempOfTomorrow;
+}
+console.log(getTempOfTmrw(AVG_TEMPERATURES));
+
+
+// destructuring assignment with nested objects
+const LOCAL_FORECAST = {
+  today: { min: 72, max: 80 },
+  tomorrow: { min: 73.3, max: 88 }
+};
+
+function getMaxOfTmrw(forecast) {
+  "use strict";
+  const { tomorrow: { max: maxOfTomorrow }} = forecast;
+  return maxOfTomorrow;
+}
+console.log(getMaxOfTmrw(LOCAL_FORECAST));
+
+
+// using destructuring assignment to assign variables from arrays
+const [zz,xx, ,yy] = [1,2,3,4,5,6];
+console.log(zz, xx, yy);
+// ^^ this automatically assigns the first two items to z, and // XXX:
+// below switches the places of the variables
+let aa = 8, bb = 6;
+(() => {
+  "use strict";
+  [aa,bb] = [bb,aa]
+})();
+console.log(aa);
+console.log(bb);
+
+
+// ussing destructuring assignment with the rest operator
+// placing the two commas with nothing in between removes the first two items from list and places rest
+const source = [1,2,3,4,5,6,7,8,9,10];
+function removeFirstTwo(list) {
+  const[ , , ...arr] = list;
+  return arr;
+}
+const arr = removeFirstTwo(source);
+console.log(arr);
+console.log(source);
+
+// using destructuring assignment to pass an object as a functions parameters
+// instead of passing all of stats into function half, only the max and min are passed in
+// since thats all we need
+// common for API requests since there is more data than what you need or want
+const stats = {
+  max: 55,
+  standard_deviation: 4.34,
+  median: 34.54,
+  mode: 23.87,
+  min: -0.75,
+  average: 35.85
+};
+const half = (function() {
+  return function half({ max, min }) {
+    return (max + min) / 2.0;
+  };
+})();
+console.log(stats);
+console.log(half(stats));
+
+
+// create strings using template literals
+const person = {
+  name: "Zodiac Hasbro",
+  age: 56
+};
+//template literal with multi-line and string interpolation
+const greeting = `Hello, my name is ${person.name}!
+I am ${person.age} years old.`
+console.log(greeting);
+
+
+// coding challenege using template litearls
+const result2 = {
+  success: ["max-length", "no-amd", "prefer-arrow-functions"],
+  failure: ["no-var", "var-on-top", "linebreak"],
+  skipped: ["id-blacklist", "no-dup-keys"]
+};
+function makeList(arr) {
+  const resultDisplayArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    resultDisplayArray.push(`<li class = "text-warning">${arr[i]}</li>`)
+  }
+  return resultDisplayArray;
+}
+const resultDisplayArray = makeList(result2.failure);
+console.log(resultDisplayArray);
+
+
+// write concise object literal declarations using simple fields
+// this code below can be written more concisely
+/*
+
+const createPerson = (name, age, gender) => {
+  return {
+    name: name,
+    age: age,
+    gender: gender
+  };
+};
+
+*/
+// below is the concise version. they output the same thing
+const createPerson = (name, age, gender) => ( {name, age, gender });
+console.log(createPerson("Zodiac Hasbro", 56, "Male"))
+
+
+// writing concise declarative FUNCTIONS
+// an object can contain a function
+// the long way to put a function in an object is below
+/*
+const bicycle = {
+  gear: 2,
+  setGeat: function(newGear) {
+  "use strict";
+  this.gear = newGear;
+}
+};
+
+*/
+const bicycle = {
+  gear: 2,
+  setGear(newGear) {
+    "use strict";
+    this.gear = newGear;
+  }
+};
+bicycle.setGear(3);
+console.log(bicycle.gear);
+
+
+// use class syntax to define a constructor function
+// OLD WAY below, using new key word
+// first var constructs the object
+// var zeus new creates a new object
+var SpaceShuttle = function(targetPlanet) {
+  this.targetPlanet = targetPlanet;
+}
+var zeus = new SpaceShuttle('Jupiter');
+console.log(zeus.targetPlanet)
+
+// now same using class syntax
+class SpaceShip {
+  constructor(targetPlanet){
+    this.targetPlanet = targetPlanet;
+  }
+}
+var thor = new SpaceShip('Venus');
+console.log(thor.targetPlanet)
+
+// vegetable class
+function makeClass() {
+  class Vegetable {
+    constructor(name){
+      this.name = name;
+    }
+  }
+  return Vegetable;
+}
+const Vegetable = makeClass();
+const carrot = new Vegetable('carrot');
+console.log(carrot.name);
+
+
+// using getters and setters to control access to an object
+//using underscore before variable marks it as a private variable
+class Book {
+  constructor(author) {
+    this._author = author;
+  }
+  // getter
+  get writer(){
+    return this._author;
+  }
+  // setter
+  set qriter(updatedAuthor){
+    this._author = updatedAuthor;
+  }
+}
+
+function makeClass2() {
+  class Thermostat {
+    constructor(temp) {
+      this._temp = 5/9 * (temp - 32);
+    }
+    get temperature(){
+      return this._temp;
+    }
+    set temperature(updatedTemp){
+      this._temp = updatedTemp;
+    }
+  }
+  return Thermostat;
+}
+
+const Thermostat = makeClass2();
+const thermos = new Thermostat(76);
+let temp = thermos.termperature;
+thermos.temperature = 26;
+temp = thermos.temperature;
+console.log(temp);
+
+
+// understand difference between import and require
+/*
+import { capatalizeString } from "./string_function"
+const cap = capatalizeString("hello!");
+console.log(cap);
+*/
+
+// export to reuse a code Block
+const capitalizeString2 = (string) => {return string.charAt(0).toUpperCase() + string.slice(1);
+}
+export { capitalizeString2 }
+export const foo = "bar";
+export const bar = "foo"
+
+// use * to import everything from a file
+// capitalizeStrings is an obhect name we create
+// in quotes is the file name from which we import
+/*
+import * as capitalizeStrings from "capitalize_strings";
+*/
+
+// export defualt fallback
+// used often if we only want to export one thing from firstLetterOfFirstName
+/*
+export default function subtract(x,y) {return x-y;}
+*/
+
+
+// import a default export
+// since its default, do not need {} around the function name like Before
+// in quotations is the file name with the function in it
+/*
+import subtract from "math_functions";
+*/
