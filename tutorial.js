@@ -744,3 +744,252 @@ console.log(updateRecords(5439, "artist", "ABBA"));
 
 
 // while loops
+var myArray = [];
+var i = 0;
+while(i < 5) {
+  myArray.push(i);
+  i++;
+}
+console.log(myArray);
+
+// for loops
+var ourArray = [];
+
+for (var i = 1; i < 6; i++) {
+  ourArray.push(i);
+}
+console.log(ourArray);
+
+
+// iterate odd numbers with for loops
+var oddArray = [];
+for (var i = 1; i < 10; i += 2) {
+  oddArray.push(i);
+}
+console.log(oddArray);
+
+
+// count backwards with for loops
+var backArray = [];
+for (var i = 10; i > 0; i -= 2) {
+  backArray.push(i);
+}
+console.log(backArray);
+
+
+// iterate through arrays
+
+var itArr = [ 9, 10, 11, 12];
+var itTotal = 0;
+
+for (var i = 0; i < itArr.length; i++) {
+  itTotal += itArr[i];
+}
+console.log(itTotal);
+
+
+// nesting for loops
+function multiplyAll(arr) {
+  var product = 1;
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr[i].length; j++) {
+      product *= arr[i][j];
+    }
+  }
+  return product;
+}
+
+var product = multiplyAll([[1,2],[3,4],[5,6,7]]);
+console.log(product);
+
+
+// do while loops
+// do always does this first even if while isnt satisfied
+
+var doArray = [];
+var i = 10;
+do {
+  doArray.push(i);
+  i++;
+} while (i < 5)
+console.log(i, doArray)
+
+
+// profile lookup coding Challenge
+var contacts = [
+  {
+    "firstName": "Harry",
+    "lastName": "Potter",
+    "likes": ["Hogwarts","Magic","Ginny"]
+  },
+  {
+    "firstName": "Ron",
+    "lastName": "Weasley",
+    "likes": ["Rats", "Chess"]
+  }
+];
+
+
+function lookUpProfile(name, prop) {
+  for (var i = 0; i < contacts.length; i++) {
+    if(contacts[i].firstName === name) {
+      return contacts[i][prop] || " No such property";
+    }
+  }
+  return "No such contact"
+}
+
+var data = lookUpProfile("Harry", "likes");
+var data2 = lookUpProfile("Hermione", "likes");
+console.log(data);
+console.log(data2);
+
+
+// create random fraction
+
+function randomFranction() {
+  return Math.random();
+}
+console.log(randomFranction());
+
+// create random whole numbers
+var randomNumberBetween0and19 = Math.floor(Math.random() * 20);
+
+function randomWholeNum() {
+  return Math.floor(Math.random() * 10);
+}
+
+console.log(randomWholeNum());
+
+// whole random numbers in a range
+
+function randomRange (myMin, myMax) {
+  return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin;
+}
+var myRandom = randomRange(5,15);
+console.log(myRandom);
+
+// integer to stringify
+function convertToInteger(str) {
+  return parseInt(str);
+}
+console.log(convertToInteger("56"));
+
+// use parseInt with a radix
+function convertToInt(str) {
+  return parseInt(str,2)
+}
+console.log(convertToInt("10011"));
+
+
+// conditional ternary operator
+// condition ? statement-if-true : statement-if-false
+// there is no need for this code since return a === b will return true or false anyway
+function checkEqual(a, b) {
+  return a === b ? true : false;
+}
+
+
+// multiple ternary operators
+function checkSign(num) {
+  return num > 0 ? "positive" : num < 0 ? "negative" : "zero"
+}
+console.log(checkSign(-90));
+
+
+// difference between var and Let
+/* cannot do This
+  let name = Joe
+  let name = austin
+
+  but can do This
+  var name = Joe
+  var name = Austin
+
+  and can do This
+  let name = Joe
+  name = austin
+
+  can sometimes write "use stict"; at beginning to catch mistakes for not declaring variables
+
+  */
+// var is declared globally or locally
+// let is only local
+// for example
+
+function checkScope() {
+  "use strict";
+  let i = "function scope";
+  if (true) {
+    let i = "block scope";
+    console.log("Block scope i is: ", i);
+  }
+  console.log("Function scope i is: ", i);
+  return i;
+}
+checkScope();
+
+// read only variables with const
+// use all caps when declaring constants
+// this means you cannot do This
+/*
+const SENTENCE = "this is cool"
+SENTENCE = "this is awesome"
+
+^^ this will return an error saying SENTENCE is read only!
+
+*/
+// you can mutate an array with constant, but cannot redeclare it
+
+const s = [5,7,2];
+function editInPlace () {
+  "use strict";
+  s[0] = 2;
+  s[1] = 5;
+  s[2] = 7;
+}
+editInPlace();
+console.log(s);
+
+
+// object.freeze prevents data mutation
+
+function freezeObj() {
+  "use strict";
+  const MATH_CONSTANTS = {
+    PI: 3.14
+  };
+
+  Object.freeze(MATH_CONSTANTS);
+
+  try {
+    MATH_CONSTANTS.PI = 99;
+  } catch( ex ) {
+    console.log(ex);
+  }
+  return MATH_CONSTANTS.PI;
+}
+
+const PI = freezeObj();
+console.log(PI);
+
+// use arrow functions to write concise anonymous FUNCTIONS
+// this can be shortened
+/*
+var magic = function() {
+  return new Date();
+};
+*/
+
+const magic = () => new Date();
+
+// write arrow functions with parameters
+//this changes to
+var myConcat = function(arr1, arr2) {
+  return arr1.concat(arr2);
+};
+console.log(myConcat([1,2],[3,4,5]));
+
+// This
+var myConcat = (arr1, arr2) => arr1.concat(arr2);
+console.log(myConcat([1,2],[3,4,5]));
