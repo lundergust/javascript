@@ -1,6 +1,34 @@
-// in line comment
-/* multi line comment
-
+//    TABLE OF CONTENTS //
+/*  line ----- topic
+    34    Data Types
+    38    Variable Basics
+    84    Arithmatic Shotcuts
+    114   Strings
+    173   Arrays
+    199   Functions
+    284   If Statements
+    293   Equalities
+    369   Logic Operators
+    389   Else and Else If
+    435   Switch Statements
+    576   JavaScript Objects
+    647   Complex and Nested Objects
+    753   While and Do While Loops
+    854   Random Numbers
+    876   ParseInt
+    889   Conditional Ternary Operator
+    904   Var vs Let vs Const
+    958   Object.freeze
+    978   Arrow Functions
+    1011  Default Increment
+    1022  Rest and Spread Operators
+    1046  Destructuring Assignment
+    1129  Template Literals
+    1157  Concise Object Literal Declarations
+    1175  Concise Declarative Functions
+    1199  Classes
+    1232  Getters and Setters
+    1271  Importing and Exporting
 */
 
 /* Data Types:
@@ -8,11 +36,8 @@ undefined, null, boolean, string, symbol, number, and object
 */
 
 var myName = "Joe";
-
 myName = 5;
-
 let ourName = "losers";
-
 const pi = 3.14;
 
 /*
@@ -26,7 +51,6 @@ var b = 2;
 console.log(a)
 a = 7;
 b = a;
-
 console.log(a)
 
 // ---------------------
@@ -171,8 +195,8 @@ console.log(ourArray);
 ourArray.unshift(["Teague", 0]);
 console.log(ourArray);
 
-// FUNCTIONS
 
+// FUNCTIONS
 function ourReuusableFunction () {
   console.log("Hello World");
 }
@@ -184,7 +208,6 @@ function ourFunctionWithArgs(a,b) {
 ourFunctionWithArgs(10,5);
 
 // Global scope and function
-
 var myGlobal = 10;
 function fun1() {
   // assign 5 to oopsGlobal here
@@ -206,7 +229,6 @@ fun1();
 fun2();
 
 // global vs local in functions
-
 var outerWear = "Shirt"
 
 function myOutfit() {
@@ -242,7 +264,6 @@ processed = processArg(7);
 console.log(processed);
 
 // Queue
-
 function nextInLine(arr, item) {
   arr.push(item);
   return arr.shift();
@@ -259,8 +280,8 @@ function welcomeToBooleans() {
   return false;
 }
 
-//conditional logic if statement
 
+//conditional logic if statement
 function trueOrFalse(wasThatTrue) {
   if (wasThatTrue) {
     return "Yes, that was true";
@@ -301,7 +322,6 @@ function compareEquality(a,b) {
 }
 console.log(compareEquality(10,'19'));
 
-
 // inequality operator
 function testNotEqual(val) {
   if (val != 99) {
@@ -333,7 +353,6 @@ function testGreaterThan(val) {
 }
 console.log(testGreaterThan(10));
 
-
 // greater than or equal to
 function testGreaterOrEqual(val) {
   if (val >= 20) {
@@ -348,7 +367,6 @@ console.log(testGreaterOrEqual(10));
 
 
 // and operator
-
 function testLogicalAnd(val) {
   if (val <= 50 && val >= 25) {
     return "Yes";
@@ -359,7 +377,6 @@ console.log(testLogicalAnd(10));
 
 
 // or operator
-
 function testLogicalOr(val) {
   if (val < 10 || val > 20) {
     return "Outside:";
@@ -370,7 +387,6 @@ console.log(testLogicalOr(15));
 
 
 // else statements
-
 function testElse(val) {
   if (val > 5) {
     result = "Bigger than 5";
@@ -383,7 +399,6 @@ console.log(testElse(2));
 
 
 // else if
-
 function testElseIf(val) {
   if(val > 10) {
     return "Greater than 10";
@@ -397,7 +412,6 @@ console.log(testElseIf(7));
 
 
 // golf CODE
-
 var names = ["Hole in One", "Eagle", "Birdie", "Par", "Bogey", "Double Bogey", "Go Home"];
 function golfScore(par, strokes) {
   if (strokes == 1) {
@@ -419,7 +433,6 @@ console.log(golfScore(4,8));
 
 
 // switch statements
-
 function caseInSwitch(val) {
   var answer = "";
   switch(val) {
@@ -442,7 +455,6 @@ console.log(caseInSwitch(3));
 
 
 // default option in switch statements
-
 function switchOfStuff(val) {
   var answer = "";
   switch(val) {
@@ -490,7 +502,6 @@ console.log(sequentialSizes(6));
 
 
 // change else if chain to switch.
-
 function startingLineup(val) {
   var answer = "";
   switch(val) {
@@ -524,7 +535,6 @@ console.log(isLess(10,15));
 
 
 // return early from FUNCTIONS
-
 function abTest(a,b) {
   if (a < 0 || b < 0) {
     return undefined;
@@ -535,7 +545,6 @@ console.log(abTest(-2,2));
 
 
 // counting cards
-
 var count = 0;
 function cc(card) {
   switch(card) {
@@ -609,7 +618,6 @@ console.log(timberwolves);
 
 
 // using objects for lookups like a dictionary
-
 var lookup = {
   "DEN": "Denver",
   "BOS": "Boston",
@@ -697,7 +705,6 @@ var secondTree = myPlants[1].list[1];
 console.log(secondTree);
 
 // Coding Challenge
-
 var collection = {
   "2548": {
     "album": "Slippery When Wet",
@@ -805,7 +812,6 @@ console.log(product);
 
 // do while loops
 // do always does this first even if while isnt satisfied
-
 var doArray = [];
 var i = 10;
 do {
@@ -846,7 +852,6 @@ console.log(data2);
 
 
 // create random fraction
-
 function randomFranction() {
   return Math.random();
 }
@@ -862,14 +867,13 @@ function randomWholeNum() {
 console.log(randomWholeNum());
 
 // whole random numbers in a range
-
 function randomRange (myMin, myMax) {
   return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin;
 }
 var myRandom = randomRange(5,15);
 console.log(myRandom);
 
-// integer to stringify
+// integer to string
 function convertToInteger(str) {
   return parseInt(str);
 }
@@ -940,7 +944,6 @@ SENTENCE = "this is awesome"
 
 */
 // you can mutate an array with constant, but cannot redeclare it
-
 const s = [5,7,2];
 function editInPlace () {
   "use strict";
@@ -953,7 +956,6 @@ console.log(s);
 
 
 // object.freeze prevents data mutation
-
 function freezeObj() {
   "use strict";
   const MATH_CONSTANTS = {
