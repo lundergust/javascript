@@ -1276,11 +1276,11 @@ console.log(cap);
 */
 
 // export to reuse a code Block
-const capitalizeString2 = (string) => {return string.charAt(0).toUpperCase() + string.slice(1);
-}
-export { capitalizeString2 }
-export const foo = "bar";
-export const bar = "foo"
+// const capitalizeString2 = (string) => {return string.charAt(0).toUpperCase() + string.slice(1);
+// }
+// export { capitalizeString2 }
+// export const foo = "bar";
+// export const bar = "foo"
 
 // use * to import everything from a file
 // capitalizeStrings is an obhect name we create
@@ -1302,3 +1302,715 @@ export default function subtract(x,y) {return x-y;}
 /*
 import subtract from "math_functions";
 */
+
+
+let users = {
+Alan: {
+  age: 27,
+  online: false
+},
+Jeff: {
+  age: 32,
+  online: true
+},
+Sarah: {
+  age: 48,
+  online: false
+},
+Ryan: {
+  age: 19,
+  online: true
+}
+};
+
+function countOnline(obj) {
+  // change code below this line
+  let counter = 0;
+  for (let user in obj) {
+    console.log(user);
+    if (obj[user]["online"] == true) {
+    counter++
+    }
+  }
+  console.log('counter = ' + counter);
+  // change code above this line
+}
+
+console.log(countOnline(users));
+
+
+function getArrayOfUsers(obj) {
+  // change code below this line
+  return Object.keys(obj);
+  // change code above this line
+}
+console.log(getArrayOfUsers(users));
+
+// BASIC ALGORITHM SCRIPTING //
+
+function reverseString(str) {
+  let array = [];
+  for (let i = str.length-1; i >= 0; i--) {
+    array.push(str[i])
+  }
+  let newString = array.join('');
+  console.log(newString);
+}
+reverseString("hello");
+
+
+function factorialize(num) {
+  let product = num;
+  for (let i = num - 1; i > 0; i--) {
+    product *= i;
+  }
+  console.log(product);
+}
+factorialize(5);
+
+
+function findLongestWordLength(str) {
+  let nonAlphabetRegex = /\S+/g;
+  let stringsList = str.match(nonAlphabetRegex);
+  console.log(stringsList);
+  let longestNum = 0;
+  let longestString;
+  for (let i = 0; i < stringsList.length; i++) {
+    if (stringsList[i].length > longestNum) {
+      longestNum = stringsList[i].length;
+      longestString = stringsList[i];
+    }
+  }
+  console.log(longestNum);
+  console.log(longestString);
+}
+
+findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+
+
+function largestOfFour(arr) {
+  // You can do this!
+  let maxArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    let max = arr[i][0];
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[i][j] > max) {
+        max = arr[i][j];
+      }
+    }
+    maxArr.push(max);
+  }
+  console.log(maxArr);
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+
+function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+
+  let indexLength = target.length-1;
+  stringEnd = str.length - 1;
+  let confirm = str.substring(stringEnd-indexLength,stringEnd+1)
+  console.log(confirm);
+  if (confirm === target) {
+    console.log(true);
+  } else {
+    console.log(false);
+  }
+}
+
+confirmEnding("Bastian", "n");
+
+
+function repeatStringNumTimes(str, num) {
+  // repeat after me
+  if (num <= 0) {
+    let newString = '';
+  } else {
+    let newString = '';
+    for (let i = 0; i < num; i++) {
+      newString += str
+    }
+    console.log(newString);
+  }
+
+}
+
+repeatStringNumTimes("abc", 3);
+
+
+
+function truncateString(str, num) {
+  // Clear out that junk in your trunk
+  if (str.length > num) {
+    let shortened = str.substring(0,num);
+    shortened += '...';
+    console.log(shortened);
+  } else {
+    console.log(str);
+  }
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 8);
+
+
+function findElement(arr, func) {
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    if (func(num) == true) {
+      console.log(num);
+    }
+  }
+}
+
+findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+
+function booWho(bool) {
+  // What is the new fad diet for ghost developers? The Boolean.
+  if (typeof(bool) == typeof(true)) {
+    return true;
+  }
+  return false;
+}
+
+booWho(true);
+
+
+function titleCase(str) {
+  let regex = /\S+/gi;
+  let matched = str.match(regex);
+  console.log(matched);
+  let newStringArray = [];
+  for (let i = 0; i < matched.length; i++) {
+    let a = matched[i].charAt(0).toUpperCase()
+    let b = matched[i].substring(1,matched[i].length).toLowerCase();
+    newStringArray.push(a+b)
+  }
+  console.log(newStringArray);
+
+let newString = newStringArray.join(' ');
+console.log(newString);
+}
+
+titleCase("sHoRt AnD sToUt");
+
+
+function frankenSplice(arr1, arr2, n) {
+  let output = arr2.slice(0,n);
+  let arr2End = arr2.slice(n,arr2.length);
+  for (let i = 0; i < arr1.length; i++) {
+    output.push(arr1[i]);
+  }
+  for (let j = 0; j < arr2End.length; j++) {
+    output.push(arr2End[j]);
+  }
+  console.log(output);
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+
+
+function bouncer(arr) {
+  // Don't show a false ID to this bouncer.
+  let a = arr.filter(type => type != false && type != null && type != 0 &&
+    type != "");
+  for (let i = 0; i < a.length; i++) {
+    if (Number.isNaN(a[i])) {
+      a.splice(i,1);
+    }
+  }
+  return a;
+}
+
+bouncer([1, null, NaN, 2, undefined]);
+
+
+
+// function getIndexToIns(arr, num) {
+//   // Find my place in this sorted array.
+//   if (arr == []) {
+//     console.log(0);
+//   } else {
+//     // sort array
+//     let sortedArray = [];
+//     let iterations = arr.length;
+//     for (k = 1; k < iterations; k++) {
+//       let min = arr[0];
+//       for (let j = 0; j < arr.length; j++) {
+//         if (arr[j] < min) {
+//           min = arr[j];
+//         }
+//         console.log(arr);
+//         console.log('min = ' + min);
+//       }
+//       console.log('next k');
+//       itemLocation = arr.indexOf(min);
+//       console.log(itemLocation);
+//       item = arr.splice(itemLocation);
+//       console.log(item);
+//       sortedArray.push(min);
+//     }
+//     sortedArray.push(arr[0]);
+//     console.log(sortedArray);
+//     console.log(arr);
+//
+//     // insert num
+//     for (let i = 0; i < arr.length - 1; i++) {
+//       if (num >= arr[i] && num <= arr[i+1]) {
+//         console.log(i+1);
+//       }
+//     }
+//   }
+// }
+//
+// getIndexToIns([49,10,8,42], 50);
+
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+  if (arr.length == 0) {
+    console.log(0);
+  } else {
+    // sort array
+    arr.sort(function(a, b){return a - b});
+    console.log(arr);
+
+    // insert num
+    if (num > arr[arr.length-1]) {
+      console.log(arr.length);
+    } else if (num <= arr[0]) {
+      console.log(0);
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        if (num > arr[i] && num <= arr[i+1]) {
+          console.log(i+1);
+        }
+    }
+    }
+  }
+}
+
+getIndexToIns([], 1);
+
+
+function mutation(arr) {
+  // convert all to lower case
+  let lowerStringArray = [];
+  let lowerTestArray = [];
+  let strRegex = /\w/gi;
+  let stringArray = arr[0].match(strRegex);
+  for (let x = 0; x < stringArray.length; x++) {
+    lowerStringArray.push(stringArray[x].toLowerCase());
+  }
+  console.log(lowerStringArray);
+  let testRegex = /\w/gi;
+  let testArray = arr[1].match(testRegex);
+  for (let y = 0; y < testArray.length; y++) {
+    lowerTestArray.push(testArray[y].toLowerCase());
+  }
+  console.log(lowerTestArray);
+
+// test for match
+  let trueFalseArray = [];
+  for (let i = 0; i < lowerTestArray.length; i++) {
+    let iterationArray = [];
+    for (let j = 0; j < lowerStringArray.length; j++) {
+      if (lowerStringArray[j] == lowerTestArray[i]) {
+        iterationArray.push(true);
+      } else {
+        iterationArray.push(false);
+      }
+    }
+      trueFalseArray.push(iterationArray);
+  }
+  console.log(trueFalseArray);
+  let finalSay = [];
+  for (let k = 0; k < trueFalseArray.length; k++) {
+    if (trueFalseArray[k].indexOf(true) == -1) {
+      finalSay.push(false);
+  } else {
+    finalSay.push(true);
+  }
+
+  if (finalSay.indexOf(false) != -1) {
+    console.log(false);
+  }
+  }
+  console.log(true);
+}
+
+mutation(["Hello", "hey"]);
+
+
+
+function chunkArrayInGroups(arr, size) {
+  // Break it up.
+  let newArr = [];
+  let iterations = parseInt(arr.length / size)
+  let remainder = arr.length % size;
+
+  for (let i = 0; i < iterations; i++) {
+    newArr.push(arr.splice(0,size))
+  }
+  if (remainder != 0) {
+    newArr.push(arr)
+  }
+  console.log(newArr);
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+
+
+function Animal() { }
+Animal.prototype.eat = function() {
+  return "nom nom nom";
+};
+function Bird() { }
+
+// Inherit all methods from Animal
+Bird.prototype = Object.create(Animal.prototype);
+
+// Bird.eat() overrides Animal.eat()
+Bird.prototype.eat = function() {
+  return "peck peck peck";
+};
+
+
+// the global variable
+var bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+/* This function should add a book to the list and return the list */
+// New parameters should come before the bookName one
+
+// Add your code below this line
+function add (arr,bookName) {
+  let a = [...arr];
+  a.push(bookName);
+  return a;
+  // Add your code above this line
+}
+
+/* This function should remove a book from the list and return the list */
+// New parameters should come before the bookName one
+
+// Add your code below this line
+function remove (a,bookName) {
+  if (a.indexOf(bookName) >= 0) {
+    let b = [...a];
+    let strikeIndex = b.indexOf(bookName);
+    b.splice(1,strikeIndex);
+    return b;
+
+    // Add your code above this line
+    }
+}
+
+
+var newBookList = add(bookList, 'A Brief History of Time');
+var newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
+var newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies');
+
+/* bookList should still equal
+["The Hound of the Baskervilles",
+"On The Electrodynamics of Moving Bodies",
+"Philosophiæ Naturalis Principia Mathematica",
+"Disquisitiones Arithmeticae"].
+
+newBookList should equal
+["The Hound of the Baskervilles",
+"On The Electrodynamics of Moving Bodies",
+"Philosophiæ Naturalis Principia Mathematica",
+"Disquisitiones Arithmeticae",
+"A Brief History of Time"].
+
+newerBookList should equal
+["The Hound of the Baskervilles",
+"Philosophiæ Naturalis Principia Mathematica",
+"Disquisitiones Arithmeticae"].
+
+newestBookList should equal
+["The Hound of the Baskervilles",
+"Philosophiæ Naturalis Principia Mathematica",
+"Disquisitiones Arithmeticae",
+"A Brief History of Time"].
+*/
+
+// using map
+var watchList = [
+                 {
+                   "Title": "Inception",
+                   "Year": "2010",
+                   "Rated": "PG-13",
+                   "Released": "16 Jul 2010",
+                   "Runtime": "148 min",
+                   "Genre": "Action, Adventure, Crime",
+                   "Director": "Christopher Nolan",
+                   "Writer": "Christopher Nolan",
+                   "Actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page, Tom Hardy",
+                   "Plot": "A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.",
+                   "Language": "English, Japanese, French",
+                   "Country": "USA, UK",
+                   "Awards": "Won 4 Oscars. Another 143 wins & 198 nominations.",
+                   "Poster": "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+                   "Metascore": "74",
+                   "imdbRating": "8.8",
+                   "imdbVotes": "1,446,708",
+                   "imdbID": "tt1375666",
+                   "Type": "movie",
+                   "Response": "True"
+                },
+                {
+                   "Title": "Interstellar",
+                   "Year": "2014",
+                   "Rated": "PG-13",
+                   "Released": "07 Nov 2014",
+                   "Runtime": "169 min",
+                   "Genre": "Adventure, Drama, Sci-Fi",
+                   "Director": "Christopher Nolan",
+                   "Writer": "Jonathan Nolan, Christopher Nolan",
+                   "Actors": "Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow",
+                   "Plot": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+                   "Language": "English",
+                   "Country": "USA, UK",
+                   "Awards": "Won 1 Oscar. Another 39 wins & 132 nominations.",
+                   "Poster": "http://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX300.jpg",
+                   "Metascore": "74",
+                   "imdbRating": "8.6",
+                   "imdbVotes": "910,366",
+                   "imdbID": "tt0816692",
+                   "Type": "movie",
+                   "Response": "True"
+                },
+                {
+                   "Title": "The Dark Knight",
+                   "Year": "2008",
+                   "Rated": "PG-13",
+                   "Released": "18 Jul 2008",
+                   "Runtime": "152 min",
+                   "Genre": "Action, Adventure, Crime",
+                   "Director": "Christopher Nolan",
+                   "Writer": "Jonathan Nolan (screenplay), Christopher Nolan (screenplay), Christopher Nolan (story), David S. Goyer (story), Bob Kane (characters)",
+                   "Actors": "Christian Bale, Heath Ledger, Aaron Eckhart, Michael Caine",
+                   "Plot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
+                   "Language": "English, Mandarin",
+                   "Country": "USA, UK",
+                   "Awards": "Won 2 Oscars. Another 146 wins & 142 nominations.",
+                   "Poster": "http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+                   "Metascore": "82",
+                   "imdbRating": "9.0",
+                   "imdbVotes": "1,652,832",
+                   "imdbID": "tt0468569",
+                   "Type": "movie",
+                   "Response": "True"
+                },
+                {
+                   "Title": "Batman Begins",
+                   "Year": "2005",
+                   "Rated": "PG-13",
+                   "Released": "15 Jun 2005",
+                   "Runtime": "140 min",
+                   "Genre": "Action, Adventure",
+                   "Director": "Christopher Nolan",
+                   "Writer": "Bob Kane (characters), David S. Goyer (story), Christopher Nolan (screenplay), David S. Goyer (screenplay)",
+                   "Actors": "Christian Bale, Michael Caine, Liam Neeson, Katie Holmes",
+                   "Plot": "After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from the corruption that Scarecrow and the League of Shadows have cast upon it.",
+                   "Language": "English, Urdu, Mandarin",
+                   "Country": "USA, UK",
+                   "Awards": "Nominated for 1 Oscar. Another 15 wins & 66 nominations.",
+                   "Poster": "http://ia.media-imdb.com/images/M/MV5BNTM3OTc0MzM2OV5BMl5BanBnXkFtZTYwNzUwMTI3._V1_SX300.jpg",
+                   "Metascore": "70",
+                   "imdbRating": "8.3",
+                   "imdbVotes": "972,584",
+                   "imdbID": "tt0372784",
+                   "Type": "movie",
+                   "Response": "True"
+                },
+                {
+                   "Title": "Avatar",
+                   "Year": "2009",
+                   "Rated": "PG-13",
+                   "Released": "18 Dec 2009",
+                   "Runtime": "162 min",
+                   "Genre": "Action, Adventure, Fantasy",
+                   "Director": "James Cameron",
+                   "Writer": "James Cameron",
+                   "Actors": "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang",
+                   "Plot": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+                   "Language": "English, Spanish",
+                   "Country": "USA, UK",
+                   "Awards": "Won 3 Oscars. Another 80 wins & 121 nominations.",
+                   "Poster": "http://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+                   "Metascore": "83",
+                   "imdbRating": "7.9",
+                   "imdbVotes": "876,575",
+                   "imdbID": "tt0499549",
+                   "Type": "movie",
+                   "Response": "True"
+                }
+];
+// Add your code below this line
+
+var rating = [];
+rating = watchList.map( (movie) => ({"title": movie['Title'], "rating" : movie["imdbRating"]}) );
+// Add your code above this line
+console.log(rating);
+
+
+var filteredList;
+filteredList = watchList.map(function(e){
+  return {'title': e["Title"], 'rating': e['imdbRating']}
+}).filter(e => e.rating > 8.0);
+// Add your code above this line
+console.log(filteredList);
+
+
+var averageRating;
+let nolanList = watchList.map(function(x) {
+  return {'rating': x['imdbRating'], 'director': x['Director']};
+}).filter(x => x.director == 'Christopher Nolan');
+// Add your code above this line
+averageRating = nolanList.reduce(function(a,b){
+  return (a + b) / nolanList.length;
+})
+console.log(nolanList);
+console.log(averageRating);
+
+
+
+// var averageRating = watchList.filter(x => x.Director === "Christopher Nolan").map(x => Number(x.imdbRating)).reduce((x1, x2) => x1 + x2) / watchList.filter(x => x.Director === "Christopher Nolan").length;
+//
+// // Add your code above this line
+//
+// console.log(averageRating);
+
+/*
+const realNumberArray = [4,5.6,-9.8,3.14,42,6,8.34,-2];
+const squareList = (arr) => {
+  const squaredIntegers = arr.filter(num => Number.isInteger(num) && num > 0).map(x => x * x);
+  return squaredIntegers;
+*/
+
+
+
+// the global Array
+let ss = [23, 65, 98, 5];
+
+Array.prototype.myMap = function(callback){
+  var newArray = [];
+  // Add your code below this line
+  this.forEach(a => newArray.push(callback(a)));
+  // Add your code above this line
+  console.log(newArray);
+
+};
+
+var new_ss = ss.myMap(function(item){
+  return item * 2;
+});
+
+
+// the global Array
+var sss = [23, 65, 98, 5];
+
+Array.prototype.myFilter = function(callback){
+  var newArray = [];
+  // Add your code below this line
+  this.forEach(function(x) {
+    if (callback(x) == true) {
+      newArray.push(x);
+    }
+
+  // Add your code above this line
+
+  })
+  return newArray;
+};
+
+var new_sss = sss.myFilter(function(item){
+  return item % 2 === 1;
+});
+
+
+function alphabeticalOrder(arr) {
+  // Add your code below this line
+  let sorted = arr.sort();
+      console.log(sorted);
+  // Add your code above this line
+}
+alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);
+
+
+
+let globalArray = [5, 6, 3, 2, 9];
+function nonMutatingSort(arr) {
+  // Add your code below this line
+  console.log(arr);
+  let array = [];
+  array = array.concat(globalArray);
+  console.log(array);
+  console.log(array.sort());
+  // Add your code above this line
+}
+nonMutatingSort(globalArray);
+
+
+
+// the global variable
+var globalTitle = "A Mind Needs Books Like A Sword Needs A Whetstone";
+
+// Add your code below this line
+function urlSlug(title) {
+  let output = [];
+  let titleRegex = /\w+/gi;
+  let array = title.match(titleRegex);
+  console.log(array);
+  for (let i = 0; i < array.length; i++) {
+    output.push(array[i].toLowerCase());
+  }
+  console.log(output.join('-'));
+
+}
+// Add your code above this line
+
+var winterComing = urlSlug(globalTitle); // Should be "winter-is-coming"
+
+
+//////////////////////////////////////////////////////////////////////////////
+//    Intermediate algorithm scripting challenges     ////////////////////////
+// 1. sum all numbers in an array
+function sumAll(arr) {
+  let newArr = arr.sort(function(a,b) {return a - b});
+  endsSum = newArr[0] + newArr[newArr.length - 1]
+  for (let i = newArr[0]; i < newArr[newArr.length - 1]; i++) {
+    endsSum += i;
+  }
+  return endsSum - newArr[0];
+}
+
+console.log(sumAll([10, 4]));
+
+
+// 2.  Diff Two Arrays
+function diffArray(arr1, arr2) {
+  var newArr = [];
+  for (let i = 0; i < arr2.length; i++) {
+  }
+  // Same, same; but different.
+  return newArr;
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+
+
+// 3. Seek and Destroy
+function destroyer(arr, ...args) {
+  let a = arr.filter(value => value != des1 && value != des2 && value != des3);
+  console.log(a);
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3, 5);
