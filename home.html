@@ -1,10 +1,297 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <script src="tutorial.js"></script>
-    <!-- <script type="module" src="string_function.js"></script> -->
-  </head>
-  <body>
+<!-- import google font "lobster" -->
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<style>
+#navbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: #990036;
+  opacity: 0.8;
+}
+nav ul {
+  margin: 5px;
+  padding: 5px 0px 5px 10px;
+  text-align: left;
+}
 
-  </body>
-</html>
+nav li {
+  display: inline;
+  margin-right: 20px;
+  font-size: 24px;
+  padding: 5px;
+  background-color: #EB0053;
+  color: #212523;
+  border-radius: 25%;
+}
+
+nav li:hover {
+  animation-name: li-hover-color;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes li-hover-color {
+  from { background-color: #EB0053; }
+  to { background-color: #00CF66; }
+}
+
+.nav-url {
+  color: #212523;
+}
+.nav-url:visited {
+  color: #FF8C00;
+}
+.nav-url:hover {
+  color: #990036;
+}
+
+body {
+  text-align: center;
+}
+
+.content{
+  padding-top: 65px;
+}
+
+.background {
+  background: url('what-the-hex.png');
+  margin: -15px
+}
+
+.layer {
+  background: linear-gradient(0deg, rgba(153,0,54,0.5), rgba(54,50,45,0.5));
+}
+
+#hello-header {
+  color: #990036;
+  font-size: 48px;
+  font-family: Lobster, monospace;
+  text-align: center;
+  padding: 25px 0px 25px 0px;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow:0 15px 25px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.5);
+  transform: skewX(20deg);
+  transform: skewY(-4deg);
+  animation: rainbow 3s infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    background-color: #00CF66;
+  }
+  33% {
+    background-color: #FF8C00;
+  }
+  66% {
+    background-color: #eb0053;
+  }
+  100% {
+    background-color: #00CF66;
+  }
+}
+
+.gray-text {
+  color: #212523;
+}
+
+.picture-border {
+  border-color: #00CF66;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 15%;
+  box-shadow:0 15px 25px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.5);
+}
+
+.silver-background {
+  background-color: silver;
+}
+
+.links {
+  color: #FF8C00;
+}
+.links:visited {
+  color: #007A3C;
+}
+.links:hover {
+  color: #990036;
+}
+
+#dirk-gif {
+  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 3;
+}
+
+#basketball {
+  width: 100px;
+  display: block;
+  position: absolute;
+  margin-top: -225px;
+  padding-bottom: 175px;
+  animation-name: bounce;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  transition-timing-function: ease-in;
+}
+
+@keyframes bounce {
+  0% {
+    z-index: 2;
+    margin-left: calc(50% - 300px);
+  }
+  49% {
+    margin-left: calc(50% + 210px);
+    z-index: 2;
+  }
+  51% {
+    margin-left: calc(50% + 210px);
+    z-index: 4;
+  }
+  100% {
+    margin-left: calc(50% - 300px);
+    z-index: 4;
+  }
+}
+
+
+#copypasta-paragraphs {
+  background-color: #00cf66;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  margin: 20px 30px 20px 30px;
+}
+
+#footer {
+  background-color: #990036;
+  padding: 10px;
+  margin: -7px 0px -7px 0px;
+}
+
+</style>
+
+
+<head>
+  <script src="tutorial.js"></script>
+  <!-- <script type="module" src="string_function.js"></script> -->
+</head>
+
+
+<div class="background">
+  <div class="layer">
+    <div class="images">
+      <br><br><br><br>
+      <img id="dirk-gif" class="picture-border"
+      src="http://i.imgur.com/jlQenUm.gif"
+      alt = "Dirk dancing with some ladies">
+      <img id="basketball"
+      src="basketball.png"
+      alt = "a basketball">
+    </div>
+
+        <!-- create a dead link with #
+        <img src="#" alt = "Dirk dancing with some ladies"> -->
+    <body>
+      <div class="content">
+        <h1 id="hello-header" class="silver-background">Hello There</h1>
+        <h2 id="nba-stats-header" class="gray-text"><u>NBA Stats Page</u></h2>
+
+        <p>View more <a class="links" href="https://imgur.com/a/Zi3MT#0"
+          target="_blank">NBA gifs</a></p>
+          <h3>
+            <a class="links" href="#footer">Jump to Bottom</a> <br>
+          </h3>
+
+          <nav id="navbar">
+            <ul>
+              <li><a class="nav-url" href="#">Scores Page</a></li>
+              <li><a class="nav-url" href="#">Stats Page</a></li>
+            </ul>
+          </nav>
+
+          <form id="search-nba-content-form" action="/search-NBA-content">
+            <input type = "text" placeholder="search for NBA content" required>
+            <button type="submit">Search</button>
+            <label for="videos">
+              <input id="Videos" type="radio" name="videos-articles" checked>Videos
+            </label>
+            <label for="articles">
+              <input id="Articles" type="radio" name="videos-articles">Articles
+            </label>
+          </form>
+          <p>Here are some random checkboxes:</p>
+          <label for="dunk"><input id="dunk" type="checkbox" name="shotTypes">Dunk</label>
+          <label for="mid-range"><input id="mid-range" type="checkbox" name="shotTypes">Mid-range</label>
+          <label for="three-point"><input id="three-point" type="checkbox" name="shotTypes">Three-point</label>
+          <main>
+            <div id="copypasta-paragraphs">
+              <hr>
+              <p>clock winds down to 5 seconds left in game <br>
+                ball is inbounded to Carmelo who turns face to face against Lebron <br>
+                "You took my family" <br>
+                moves to the left <br>
+                "You took my friends" <br>
+                moves to the right <br>
+                "You took all that was dear to me" <br>
+                clock winds down to 2 <br>
+                "I cant get them back, but I can do this for friendship, <strong>FOR MY FRIENDS</strong>" <br>
+                goes up, fire coming out of his shoes <br>
+                <strong>"CARMELORUKEN"</strong> <br>
+                Ball flies over Lebrons head, goes straight into basket. Carmelo falls to
+                the ground, exhausted. <br>
+                "Shumpert... Senpai... I..." <br>
+                faints <br>
+                <strong>
+                  Final Score <br>
+                  Cavs 103 <br>
+                  Knicks 63
+                </strong>
+              </p>
+              <hr>
+
+              <p>Derozan's kind of a clown tbh. He played at my school a few years ago.
+                I saw him after the game and I flexed on him with a few of my favorite
+                poses (perched eagle, blacksmith pivot) and
+                he didn't do anything about it</p>
+                <hr>
+
+                <p>I saw Steve Blake at a grocery store in Los Angeles yesterday.
+                  I told him how cool it was to meet him in person, but I didn’t want
+                  to be a douche and bother him and ask him for photos or anything. He
+                  said, “Oh, like you’re doing now?” I was taken aback, and all I could
+                  say was “Huh?” but he kept cutting me off and going “huh? huh? huh?”
+                  and closing his hand shut in front of my face. I walked away and
+                  continued with my shopping, and I heard him chuckle as I walked off.
+                  When I came to pay for my stuff up front I saw him trying to walk out
+                  the doors with like fifteen Milky Ways in his hands without paying.
+                  The girl at the counter was very nice about it and professional, and
+                  was like “Sir, you need to pay for those first.” At first he kept
+                  pretending to be tired and not hear her, but eventually turned back
+                  around and brought them to the counter. When she took one of the bars
+                  and started scanning it multiple times, he stopped her and told her
+                  to scan them each individually “to prevent any <em>electrical infetterence,</em>”
+                  and then turned around and winked at me. I don’t even think that’s
+                  a word. After she scanned each bar and put them in a bag and started
+                  to say the price, he kept interrupting her by yawning really loudly.</p>
+                  <hr>
+
+                </div>
+              </main>
+              <hr>
+              <footer id = "footer">Copyright LunderStats</footer>
+              <hr>
+              <br>
+            </div>
+          </body>
+        </div>
+      </div>
+
+
+      <!-- commenting -->
+      </html>
