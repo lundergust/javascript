@@ -1995,6 +1995,10 @@ function sumAll(arr) {
 console.log(sumAll([10, 4]));
 
 
+
+
+
+
 // 2.  Diff Two Arrays
 function diffArray(arr1, arr2) {
   var newArr = [];
@@ -2004,13 +2008,21 @@ function diffArray(arr1, arr2) {
   return newArr;
 }
 
+
+
+
+
+
+
+
+
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 
 
-// 3. Seek and Destroy
-function destroyer(arr, ...args) {
-  let a = arr.filter(value => value != des1 && value != des2 && value != des3);
-  console.log(a);
-}
-
-destroyer([1, 2, 3, 1, 2, 3], 2, 3, 5);
+// // 3. Seek and Destroy
+// function destroyer(arr, ...args) {
+//   let a = arr.filter(value => value != des1 && value != des2 && value != des3);
+//   console.log(a);
+// }
+//
+// destroyer([1, 2, 3, 1, 2, 3], 2, 3, 5);
