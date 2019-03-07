@@ -1995,24 +1995,26 @@ function sumAll(arr) {
 console.log(sumAll([10, 4]));
 
 
-
-
-
-
 // 2.  Diff Two Arrays
 function diffArray(arr1, arr2) {
+  console.log('diffArray testing');
+  console.log(arr1);
+  console.log(arr2);
   var newArr = [];
-  for (let i = 0; i < arr2.length; i++) {
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr2.indexOf(arr1[i]) == -1) {
+      newArr.push(arr1[i]);
+    }
   }
-  // Same, same; but different.
-  return newArr;
+  for (let j = 0; j< arr2.length; j++) {
+    if (arr1.indexOf(arr2[j]) == -1) {
+      newArr.push(arr2[j]);
+    }
+  }
+  console.log(newArr);
 }
 
-
-
-
-
-diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
 
 
 // // 3. Seek and Destroy
