@@ -1978,27 +1978,42 @@ destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 //////////////////////////////////////////////////////////////////////////////
 // 4. Wherefore art thou
 function whatIsInAName(collection, source) {
-  var arr = [...collection];
-}
 
-whatIsInAName(
-  [
-    { first: "Romeo", last: "Montague" },
-    { first: "Mercutio", last: null },
-    { first: "Tybalt", last: "Capulet" }
-  ],
-  { last: "Capulet" }
-);
+  var sourceKeys = Object.keys(source);
+  var sourceValues = Object.values(source);
+  var collectionKeys = Object.keys(collection);
+  var collectionValues = Object.values(collection);
 
-// var averageRating;
-// let nolanList = watchList
-//   .map(function(x) {
-//     return { rating: x["imdbRating"], director: x["Director"] };
-//   })
-//   .filter(x => x.director == "Christopher Nolan");
-// // Add your code above this line
-// averageRating = nolanList.reduce(function(a, b) {
-//   return (a + b) / nolanList.length;
-// });
-// console.log(nolanList);
-// console.log(averageRating);
+  console.log('///////////');
+  console.log(sourceKeys);
+  console.log(sourceValues[0]);
+  console.log(collection);
+
+  for (var i = 0; i < collection.length; i++) {
+    var tfArray = [];
+    var output = [];
+    tfArray.push('item' + i.toString());
+    for (var j = 0; j < sourceKeys.length; j++) {
+      if (collection[i].hasOwnProperty(sourceKeys[j]) && collection[i][sourceKeys[j]] === sourceValues[j]) {
+        console.log(i,j,sourceKeys[j],collection[i][sourceKeys[j]]);
+        tfArray.push(true);
+      } else {
+        tfArray.push(false);
+      }
+    }
+
+      if (tfArray.indexOf(false) != -1) {
+        console.log('for i = ' + i + ' tfArray has a false in it, returning empty array below');
+        console.log(output);
+      } else {
+        output.push(collection[i]);
+        console.log(output);
+      }
+
+
+  }
+  console.log('tfArray is shown below');
+  console.log(tfArray);
+  }
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })
