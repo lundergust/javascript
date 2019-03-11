@@ -1978,13 +1978,12 @@ destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 //////////////////////////////////////////////////////////////////////////////
 // 4. Wherefore art thou
 function whatIsInAName(collection, source) {
-
   var sourceKeys = Object.keys(source);
   var sourceValues = Object.values(source);
   var collectionKeys = Object.keys(collection);
   var collectionValues = Object.values(collection);
 
-  console.log('///////////');
+  console.log("///////////");
   console.log(sourceKeys);
   console.log(sourceValues[0]);
   console.log(collection);
@@ -1992,28 +1991,216 @@ function whatIsInAName(collection, source) {
   for (var i = 0; i < collection.length; i++) {
     var tfArray = [];
     var output = [];
-    tfArray.push('item' + i.toString());
+    tfArray.push("item" + i.toString());
     for (var j = 0; j < sourceKeys.length; j++) {
-      if (collection[i].hasOwnProperty(sourceKeys[j]) && collection[i][sourceKeys[j]] === sourceValues[j]) {
-        console.log(i,j,sourceKeys[j],collection[i][sourceKeys[j]]);
+      if (
+        collection[i].hasOwnProperty(sourceKeys[j]) &&
+        collection[i][sourceKeys[j]] === sourceValues[j]
+      ) {
+        console.log(i, j, sourceKeys[j], collection[i][sourceKeys[j]]);
         tfArray.push(true);
       } else {
         tfArray.push(false);
       }
     }
 
-      if (tfArray.indexOf(false) != -1) {
-        console.log('for i = ' + i + ' tfArray has a false in it, returning empty array below');
-        console.log(output);
-      } else {
-        output.push(collection[i]);
-        console.log(output);
-      }
-
-
+    if (tfArray.indexOf(false) != -1) {
+      console.log(
+        "for i = " +
+          i +
+          " tfArray has a false in it, returning empty array below"
+      );
+      console.log(output);
+    } else {
+      output.push(collection[i]);
+      console.log(output);
+    }
   }
-  console.log('tfArray is shown below');
+  console.log("tfArray is shown below");
   console.log(tfArray);
-  }
+}
 
-whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })
+whatIsInAName(
+  [
+    { first: "Romeo", last: "Montague" },
+    { first: "Mercutio", last: null },
+    { first: "Tybalt", last: "Capulet" }
+  ],
+  { last: "Capulet" }
+);
+
+///////////////////////////////////////////////////////////////////////////////
+// 4. Spinal Tap
+function spinalCase(str) {
+  var strRegex = /(^[a-z]|[A-Z]|\S)[a-z^-]+/g;
+  var strArray = str.match(strRegex);
+  console.log(strArray);
+  var spinal = strArray.join("-");
+  console.log(spinal.toLowerCase());
+}
+
+spinalCase("Teletubbies say Eh-oh");
+
+///////////////////////////////////////////////////////////////////////////////
+// 5. Pig Latin
+function translatePigLatin(str) {
+  var charRegex = /\w/gi;
+  var characters = str.match(charRegex);
+  var vowelRegex = /[aieou]/gi;
+  var checkVowel = str.match(vowelRegex);
+  console.log(checkVowel);
+
+  if (checkVowel === null) {
+    console.log(`${str}ay`);
+  } else if (
+    characters[0] == "a" ||
+    characters[0] == "i" ||
+    characters[0] == "e" ||
+    characters[0] == "o" ||
+    characters[0] == "u" ||
+    characters[0] == "y"
+  ) {
+    console.log(`${str}way`);
+  } else {
+    // shift and push first character
+    var consonantRegex = /^[^aieou]+/gi;
+    var startCluster = str.match(consonantRegex);
+    console.log(startCluster);
+    for (var i = 0; i < startCluster.toString().length; i++) {
+      characters.shift();
+    }
+    var latin = `${characters.join("")}${startCluster.toString()}ay`;
+    console.log(latin);
+  }
+}
+
+translatePigLatin("glcd");
+
+///////////////////////////////////////////////////////////////////////////////
+// 6. Search and Replace
+function myReplace(str, before, after) {
+  if (before[0].toUpperCase() === before[0]) {
+    var afterRegex = /\w/gi;
+    var afterArray = after.match(afterRegex);
+    var shifted = afterArray.shift();
+    afterArray.unshift(shifted.toUpperCase());
+    after = afterArray.join("");
+  } else {
+    var afterRegex = /\w/gi;
+    var afterArray = after.match(afterRegex);
+    var shifted = afterArray.shift();
+    afterArray.unshift(shifted.toLowerCase());
+    after = afterArray.join("");
+  }
+  console.log(after);
+  var re = new RegExp(before);
+  console.log(str.replace(re, after));
+}
+
+myReplace("He is sleeping on the couch", "sleeping", "Sitting");
+
+////////////////////////////////////////////////////////////////////////////////
+// 7. DNA Pairing
+function pairElement(str) {
+  var strRegex = /\w/gi;
+  var strArray = str.match(strRegex);
+  var output = [];
+  for (var i = 0; i < strArray.length; i++) {
+    var iArray = [];
+    if (strArray[i] == "C") {
+      iArray = ["C", "G"];
+      output.push(iArray);
+    } else if (strArray[i] == "G") {
+      iArray = ["G", "C"];
+      output.push(iArray);
+    } else if (strArray[i] == "A") {
+      iArray = ["A", "T"];
+      output.push(iArray);
+    } else if (strArray[i] == "T") {
+      iArray = ["T", "A"];
+      output.push(iArray);
+    }
+  }
+  console.log(output);
+}
+
+pairElement("GCG");
+
+////////////////////////////////////////////////////////////////////////////////
+// 8. Missing Letters
+function fearNotLetter(str) {
+  var alphabet = /\w/gi;
+  var strArray = str.match(alphabet);
+  var utf = [];
+  for (var i = 0; i < strArray.length; i++) {
+    utf.push(str.charCodeAt(i));
+  }
+  for (var i = 1; i < utf.length; i++) {
+    if (utf[i] - utf[i - 1] != 1) {
+      console.log(String.fromCharCode(utf[i] - 1));
+    }
+  }
+}
+
+fearNotLetter("abce");
+
+////////////////////////////////////////////////////////////////////////////////
+// 9. Sorted Union
+function uniteUnique(arr1, ...args) {
+  var output = [];
+  output.push(arr1[0]);
+  for (var i = 1; i < arr1.length; i++) {
+    if (output.indexOf(arr1[i]) == -1) {
+      output.push(arr1[i]);
+    }
+  }
+  for (var j = 0; j < args.length; j++) {
+    for (var k = 0; k < args[j].length; k++) {
+      if (output.indexOf(args[j][k]) == -1) {
+        output.push(args[j][k]);
+      }
+    }
+  }
+  console.log(output);
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+////////////////////////////////////////////////////////////////////////////////
+// 10. Convert HTML Entities
+function convertHTML(str) {
+  var everythingRegex = /(\S+)/gi;
+  var things = str.match(everythingRegex);
+  var output = [];
+  console.log(things);
+  console.log("/////");
+  // word loop
+  for (var i = 0; i < things.length; i++) {
+    var wordRegex = /\S/gi;
+    var letters = things[i].match(wordRegex);
+    // letter loop
+    for (var j = 0; j < letters.length; j++) {
+      if (letters[j] === "&") {
+        letters[j] = "&amp;";
+      } else if (letters[j] === "<") {
+        letters[j] = "&lt;";
+      } else if (letters[j] === ">") {
+        letters[j] = "&gt;";
+      } else if (letters[j] === '"') {
+        letters[j] = "&quot;";
+      } else if (letters[j] === "'") {
+        letters[j] = "&apos;";
+      }
+    }
+    output.push(letters.join(""));
+    console.log("/////");
+    console.log(output);
+  }
+  console.log("////");
+  console.log(output.join(" "));
+}
+
+convertHTML("Dolce & Gabbana"); //should return Stuff in &​quot;quotation marks&​quot;.
+
+////////////////////////////////////////////////////////////////////////////////
+// 11. Sum All Fibonacci Numbers
