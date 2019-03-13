@@ -2205,8 +2205,8 @@ convertHTML("Dolce & Gabbana"); //should return Stuff in &​quot;quotation mark
 ////////////////////////////////////////////////////////////////////////////////
 // 11. Sum All Fibonacci Numbers
 function sumFibs(num) {
-  var allFibs = [1,1]
-  var sum = allFibs.reduce((a,b) => a + b);
+  var allFibs = [1, 1];
+  var sum = allFibs.reduce((a, b) => a + b);
   var lastPos = allFibs.length - 1;
   var secLastPos = allFibs.length - 2;
   var last = allFibs[lastPos];
@@ -2218,15 +2218,13 @@ function sumFibs(num) {
     var last = allFibs[lastPos];
     var secLast = allFibs[secLastPos];
   }
-  var oddFibs = allFibs.filter(num => num %2 == 1)
-  console.log(oddFibs);
-  console.log(oddFibs.reduce((a,b) => a + b));
-
+  var oddFibs = allFibs.filter(num => num % 2 == 1);
+  console.log(oddFibs.reduce((a, b) => a + b));
 }
 
 sumFibs(75025);
 
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 // 12. Sum All Primes
 function sumPrimes(num) {
   var allArr = [];
@@ -2240,7 +2238,7 @@ function sumPrimes(num) {
     for (var i = 4; i <= num; i++) {
       allArr.push(i);
     }
-    var primes = [2,3];
+    var primes = [2, 3];
     for (var j = 0; j < allArr.length; j++) {
       var tfArray = [];
       for (var k = 2; k < allArr[j]; k++) {
@@ -2254,16 +2252,47 @@ function sumPrimes(num) {
       }
     }
   }
-  var sum = primes.reduce((a,b) => a + b);
+  var sum = primes.reduce((a, b) => a + b);
   console.log(sum);
 }
 sumPrimes(977);
 
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 // 13. Smallest Common Multiple
 function smallestCommons(arr) {
+  // Sort array ascending
+  arr.sort(function(a, b) {
+    return a - b;
+  });
 
+  // Generate array of common multiples
+  var multiples = [];
+  for (var n = 1; n < 10000000; n++) {
+    if (n % arr[0] == 0 && n % arr[1] == 0) {
+      multiples.push(n);
+    }
+  }
+
+  // test for divisble between range
+  for (var j = multiples[0]; j < multiples.length; j++) {
+    var tfArray = [];
+    for (var i = arr[0] + 1; i < arr[1]; i++) {
+      if (multiples[j] % i != 0) {
+        break;
+      } else {
+        tfArray.push(true);
+      }
+    }
+    var intervalLength = arr[1] - arr[0] - 1;
+    if (tfArray.length == intervalLength) {
+      console.log("///////");
+      console.log(multiples[j], i, tfArray);
+      break;
+    }
+  }
 }
 
+smallestCommons([23, 18]);
 
-smallestCommons([1,5]);
+///////////////////////////////////////////////////////////////////////////////
+// 14, Drop It
