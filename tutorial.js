@@ -2204,3 +2204,66 @@ convertHTML("Dolce & Gabbana"); //should return Stuff in &​quot;quotation mark
 
 ////////////////////////////////////////////////////////////////////////////////
 // 11. Sum All Fibonacci Numbers
+function sumFibs(num) {
+  var allFibs = [1,1]
+  var sum = allFibs.reduce((a,b) => a + b);
+  var lastPos = allFibs.length - 1;
+  var secLastPos = allFibs.length - 2;
+  var last = allFibs[lastPos];
+  var secLast = allFibs[secLastPos];
+  while (last + secLast <= num) {
+    allFibs.push(last + secLast);
+    var lastPos = allFibs.length - 1;
+    var secLastPos = allFibs.length - 2;
+    var last = allFibs[lastPos];
+    var secLast = allFibs[secLastPos];
+  }
+  var oddFibs = allFibs.filter(num => num %2 == 1)
+  console.log(oddFibs);
+  console.log(oddFibs.reduce((a,b) => a + b));
+
+}
+
+sumFibs(75025);
+
+////////////////////////////////////////////////////////////////////////////////
+// 12. Sum All Primes
+function sumPrimes(num) {
+  var allArr = [];
+  if (num == 0) {
+    return 0;
+  } else if (num == 1) {
+    return 1;
+  } else if (num == 2) {
+    return 2;
+  } else {
+    for (var i = 4; i <= num; i++) {
+      allArr.push(i);
+    }
+    var primes = [2,3];
+    for (var j = 0; j < allArr.length; j++) {
+      var tfArray = [];
+      for (var k = 2; k < allArr[j]; k++) {
+        if (allArr[j] % k == 0) {
+          tfArray.push(true);
+          break;
+        }
+      }
+      if (tfArray.indexOf(true) == -1) {
+        primes.push(allArr[j]);
+      }
+    }
+  }
+  var sum = primes.reduce((a,b) => a + b);
+  console.log(sum);
+}
+sumPrimes(977);
+
+////////////////////////////////////////////////////////////////////////////////
+// 13. Smallest Common Multiple
+function smallestCommons(arr) {
+
+}
+
+
+smallestCommons([1,5]);
